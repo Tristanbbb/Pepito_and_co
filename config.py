@@ -4,7 +4,7 @@ import os
 
 # Server configuration
 USING_LOCAL_SERVER = True # If True, then you need to configure PATH_TO_SERVER and SERVER_NAME below
-PATH_TO_SERVER = '/media/triton/1TB HDD/Documents/certstream_server/certstream-server-go_1.7.0_linux_amd64' # If Windows, escape backlslash (\\) and add ".exe"
+PATH_TO_SERVER = '' # If Windows, escape backlslash (\\) and add ".exe"
 PRINT_SERVER_LOGS = False # Will or will not print the server logs on the standard output
 
 # Domain configuration

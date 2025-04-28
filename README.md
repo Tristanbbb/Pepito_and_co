@@ -5,8 +5,9 @@ and information about the certificate issuer.
 Most of the configuration of the program can be found in src.config.py.
 
 # Prerequisites
-### Pull the code from Github
 - git clone https://github.com/Tristanbbb/Pepito_and_co.git
+- Open the project in Pycharm
+- Click "Create a virtual environment using requirements.txt"
 
 ### AbuseIPDB API key
 You need to create a ".env" folder at the root folder of the project and add a line like "API_KEY_ABUSEIPDB=your_key"
@@ -14,6 +15,11 @@ You need to create a ".env" folder at the root folder of the project and add a l
 The certstream.calidog.io server hasn't been working at all since I've started working on this exercise, so I have had to run the server locally.
 
 **For Linux Mint**:
+- Download a precompiled version of [certstream-server-go](https://github.com/d-Rickyy-b/certstream-server-go)
+- Create a config.yml file in the same folder (kept defaults)
+- Make it executable (chmod u+x ./certstream-server-go_1.7.0_linux_amd64)
+
+**For Windows**:
 - Download a precompiled version of [certstream-server-go](https://github.com/d-Rickyy-b/certstream-server-go)
 - Create a config.yml file in the same folder (kept defaults)
 - Make it executable (chmod u+x ./certstream-server-go_1.7.0_linux_amd64)

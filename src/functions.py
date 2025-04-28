@@ -18,6 +18,8 @@ def run_server():
         print("Error trying to run the server: file not found. Double check config.PATH_TO_SERVER and config.SERVER_NAME")
         print(exception_instance)
         raise FileNotFoundError
+    except Exception as exception_instance:
+        print(f"Other server error: {exception_instance}")
 
 # See README.md to see the risk analysis policy
 def get_risk_level(abuse_confidence_scores, cert_provider):

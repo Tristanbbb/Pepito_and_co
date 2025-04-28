@@ -1,9 +1,9 @@
-import src.config
+import config
 
 def get_list_of_issuer_attributes_to_retrieve():
     list_of_attributes = []
     try:
-        list_of_attributes = src.config.ISSUER_ATTRIBUTES_TO_RETRIEVE
+        list_of_attributes = config.ISSUER_ATTRIBUTES_TO_RETRIEVE
     # If for some reason there is a problem with the retrieval from the config above,
     # then we return a list of default attributes (the ones specified in the exercise instructions
     except Exception as exception_instance:

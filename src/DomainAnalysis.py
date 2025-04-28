@@ -1,4 +1,4 @@
-import src.config
+import config
 import Levenshtein
 from src.AbuseIPDBClient import AbuseIPDBClient
 
@@ -29,7 +29,7 @@ class DomainAnalysis:
     # Use it only when necessary (suspicious domains found) to reduce API calls
     def match_scores_to_suspicious_domains(self):
         try:
-            abuse_ipdb_client = AbuseIPDBClient(api_key_id=src.config.API_KEY_ID)
+            abuse_ipdb_client = AbuseIPDBClient(api_key_id=config.API_KEY_ID)
         except Exception as exception_instance:
             # If we can't initialize the AbuseIPDB Client, we still want to record the log
             # Info about scores will be missing but it's better than not recording the info at all

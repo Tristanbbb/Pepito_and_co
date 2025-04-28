@@ -5,13 +5,13 @@ import os
 import socket
 import requests.exceptions
 from src.BaseClient import BaseClient
-import src.config
+import config
 from dotenv import load_dotenv
 from pathlib import Path
 
 # Exceptions in this class should not be fatal: we can still log the suspicious domain names, even if we don't have confidence scores for them.
 class AbuseIPDBClient(BaseClient):
-    def __init__(self, api_key_id, base_url=src.config.ABUSEIPDB_API_BASE_URL):
+    def __init__(self, api_key_id, base_url=config.ABUSEIPDB_API_BASE_URL):
         super().__init__(base_url=base_url)
         self.api_key_id = api_key_id
         try:

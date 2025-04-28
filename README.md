@@ -8,37 +8,32 @@ Most of the configuration of the program can be found in src.config.py.
 - git clone https://github.com/Tristanbbb/Pepito_and_co.git
 - Open the project in Pycharm
 - Click "Create a virtual environment using requirements.txt"
+- Create a ".env" folder at the root folder of the project and add a line like "API_KEY_ABUSEIPDB=your_key"
+- Run the server locally if certstream.calidog.io doesn't work (see below)
 
-### AbuseIPDB API key
-You need to create a ".env" folder at the root folder of the project and add a line like "API_KEY_ABUSEIPDB=your_key"
 ### Running the server locally
 The certstream.calidog.io server hasn't been working at all since I've started working on this exercise, so I have had to run the server locally.
-
-**For Linux Mint**:
 - Download a precompiled version of [certstream-server-go](https://github.com/d-Rickyy-b/certstream-server-go)
-- Create a config.yml file in the same folder (kept defaults)
-- Make it executable (chmod u+x ./certstream-server-go_1.7.0_linux_amd64)
+- Create a config.yml file in the Pepito_and_co/src folder (or keep the default file)
+- (Linux) Make the server executable (chmod u+x ./certstream-server-go_1.7.0_linux_amd64)
 
-**For Windows**:
-- Download a precompiled version of [certstream-server-go](https://github.com/d-Rickyy-b/certstream-server-go)
-- Create a config.yml file in the same folder (kept defaults)
-- Make it executable (chmod u+x ./certstream-server-go_1.7.0_linux_amd64)
 
 # Project structure
 - src: contains the python files
-  - config.py: contains most of the configuration of the program
   - AbuseIPDBClient.py: contains the class calling the AbuseIPDB API
   - BaseClient.py: base class for http requests
   - CertstreamMessages.py: class to represent the interesting parts of the certstream message
   - DomainAnalysis.py: class retrieving the suspicious domains from a certstream message and from which the calls to the AbuseIPDBClient class are made
   - Logger.py: contains the logging logic, including accessing and closing the file
   - functions.py: other functions
+  - config.yml: configuration for the locally run certstream server
   - main.py
 - unit_tests: contains the unit tests
 - logs
   - suspicious_domains.log: contains the log of suspicious domains found.
 - .venv: contains the Python virtual environment with the necessary libraries
 - files in root
+  - config.py: contains most of the configuration of the program
   - README.mdr
   - requirements.txt: needed python libraries. To install with "pip install -r requirements.txt"
   - .env: simulated env variables with the python dotenv lib. API_KEY_ABUSEIPDB=my_secret_api_key

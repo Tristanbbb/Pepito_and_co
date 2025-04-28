@@ -1,8 +1,7 @@
 # Logger.py
-import os
-from src.config import LOGFILE_SUSPICIOUS_DOMAINS # Location of the log file
-from src.config import PRINT_SUSPICIOUS_DOMAINS_LOGS # True if we want to print the logs to the terminal in addition to already adding them to the log file
-from src.config import LOG_MODE # "Append" or "Write" ("Write" deletes the old data from the log file!)
+from config import LOGFILE_SUSPICIOUS_DOMAINS # Location of the log file
+from config import PRINT_SUSPICIOUS_DOMAINS_LOGS # True if we want to print the logs to the terminal in addition to already adding them to the log file
+from config import LOG_MODE # "Append" or "Write" ("Write" deletes the old data from the log file!)
 
 class Logger:
     def __init__(self):

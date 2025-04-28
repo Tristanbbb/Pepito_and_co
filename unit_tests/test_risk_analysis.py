@@ -1,14 +1,14 @@
 
 import unittest
 
-import src.config
+import config
 from src.functions import get_risk_level
 
 class BaseClientTests(unittest.TestCase):
 
     def setUp(self):
-        src.config.INCREASED_RISK_SCORE_THRESHOLD = 50
-        src.config.SUSPICIOUS_CERT_PROVIDERS = ["Let's Encrypt"]
+        config.INCREASED_RISK_SCORE_THRESHOLD = 50
+        config.SUSPICIOUS_CERT_PROVIDERS = ["Let's Encrypt"]
 
     def test_risk_level_low(self):
         risk = get_risk_level(abuse_confidence_scores=[20],cert_provider='Google Trust Services')

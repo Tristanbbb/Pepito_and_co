@@ -4,8 +4,7 @@ import os
 
 # Server configuration
 USING_LOCAL_SERVER = True # If True, then you need to configure PATH_TO_SERVER and SERVER_NAME below
-PATH_TO_SERVER = '/media/triton/1TB HDD/Documents/certstream_server'
-SERVER_NAME = './certstream-server-go_1.7.0_linux_amd64'
+PATH_TO_SERVER = '/media/triton/1TB HDD/Documents/certstream_server/certstream-server-go_1.7.0_linux_amd64'
 PRINT_SERVER_LOGS = False # Will or will not print the server logs on the standard output
 
 # Domain configuration
@@ -23,7 +22,7 @@ INCREASED_RISK_SCORE_THRESHOLD = 50 # If the IPDB abuse confidence score is over
                                     # then the risk is considered one rank higher (for instance going from LOW to MEDIUM)
 
 # Log configuration
-LOGFILE_SUSPICIOUS_DOMAINS = "{}/suspicious_domains.log".format(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),'logs'))
+LOGFILE_SUSPICIOUS_DOMAINS = "{}/suspicious_domains.log".format(os.path.join(os.path.dirname(os.path.abspath(__file__)),'logs'))
 LOG_MODE = "Write" # "Write" or "Append". Be careful, picking "Write" will erase the previous data.
 PRINT_SUSPICIOUS_DOMAINS_LOGS = True # True : print logs both to the log file "LOGFILE_SUSPICIOUS_DOMAINS" and to the standard output
                   # False: print logs only to the log file "LOGFILE_SUSPICIOUS_DOMAINS"

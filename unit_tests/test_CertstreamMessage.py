@@ -2,14 +2,14 @@
 
 import unittest
 
-import src.config
-from src.CertstreamMessage import CertstreamMessage, get_list_of_issuer_attributes_to_retrieve
+import config
+from src.CertstreamMessage import CertstreamMessage
 from unit_tests import message_samples
 # To run : python3 -m unittest test_api_key_manager.py
 
 class CertstreamMessageTest(unittest.TestCase):
     def setUp(self):
-        src.config.ISSUER_ATTRIBUTES_TO_RETRIEVE=['C','CN','O','TOTO']
+        config.ISSUER_ATTRIBUTES_TO_RETRIEVE=['C', 'CN', 'O', 'TOTO']
 
     def test_standard_message(self):
         my_certstream_message = CertstreamMessage(message_samples.standard_message)

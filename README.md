@@ -4,14 +4,19 @@ This programs uses the Levenshtein distance to spot suspicious domains, get thei
 and information about the certificate issuer.
 Most of the configuration of the program can be found in src.config.py.
 
-# Running the server locally
+# Prerequisites
+### Pull the code from Github
+- git clone https://github.com/Tristanbbb/Pepito_and_co.git
+
+### AbuseIPDB API key
+You need to create a ".env" folder at the root folder of the project and add a line like "API_KEY_ABUSEIPDB=your_key"
+### Running the server locally
 The certstream.calidog.io server hasn't been working at all since I've started working on this exercise, so I have had to run the server locally.
-I'm on Linux Mint and here is how I did things:
-- Downloaded a precompiled version of [certstream-server-go](https://github.com/d-Rickyy-b/certstream-server-go)
-- Created a config.yml file in the same folder (kept defaults)
-- Made it executable (chmod u+x ./certstream-server-go_1.7.0_linux_amd64)
-- Checked ufw to verify that incoming connections on port 8080 are denied
-- Ran the server!
+
+**For Linux Mint**:
+- Download a precompiled version of [certstream-server-go](https://github.com/d-Rickyy-b/certstream-server-go)
+- Create a config.yml file in the same folder (kept defaults)
+- Make it executable (chmod u+x ./certstream-server-go_1.7.0_linux_amd64)
 
 # Project structure
 - src: contains the python files
@@ -28,7 +33,8 @@ I'm on Linux Mint and here is how I did things:
   - suspicious_domains.log: contains the log of suspicious domains found.
 - .venv: contains the Python virtual environment with the necessary libraries
 - files in root
-  - README.md
+  - README.mdr
+  - requirements.txt: needed python libraries. To install with "pip install -r requirements.txt"
   - .env: simulated env variables with the python dotenv lib. API_KEY_ABUSEIPDB=my_secret_api_key
   - .gitignore: removes .env because the API key is secret.
 

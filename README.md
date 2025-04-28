@@ -47,6 +47,7 @@ The risk is bumped up one rank in any of those cases (and bumped up two ranks if
 - If the certificate provider is considered as a suspicious one (also set in config.py, variable SUSPICIOUS_CERT_PROVIDERS)
 
 # Potential improvements
+- Containerize with Docker?
 - Custom handling of more exception types, creating my own Exception classes.
 - A better risk analysis function
 - Automatically check if we receive heartbeats from the certstream.calidog server, else run the server locally.

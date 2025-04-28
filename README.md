@@ -1,0 +1,49 @@
+
+# Introduction
+This programs uses the Levenshtein distance to spot suspicious domains, get their AbuseIPDB confidence score,
+and information about the certificate issuer.
+Most of the configuration of the program can be found in src.config.py.
+
+# Running the server locally
+The certstream.calidog.io server hasn't been working at all since I've started working on this exercise, so I have had to run the server locally.
+I'm on Linux Mint and here is how I did things:
+- Downloaded a precompiled version of [certstream-server-go](https://github.com/d-Rickyy-b/certstream-server-go)
+- Created a config.yml file in the same folder (kept defaults)
+- Made it executable (chmod u+x ./certstream-server-go_1.7.0_linux_amd64)
+- Checked ufw to verify that incoming connections on port 8080 are denied
+- Ran the server!
+
+# Project structure
+- src: contains the python files
+  - config.py: contains most of the configuration of the program
+  - AbuseIPDBClient.py: contains the class calling the AbuseIPDB API
+  - BaseClient.py: base class for http requests
+  - CertstreamMessages.py: class to represent the interesting parts of the certstream message
+  - DomainAnalysis.py: class retrieving the suspicious domains from a certstream message and from which the calls to the AbuseIPDBClient class are made
+  - Logger.py: contains the logging logic, including accessing and closing the file
+  - functions.py: other functions
+  - main.py
+- unit_tests: contains the unit tests
+- logs
+  - suspicious_domains.log: contains the log of suspicious domains found.
+- .venv: contains the Python virtual environment with the necessary libraries
+- files in root
+  - README.md
+  - .env: simulated env variables with the python dotenv lib. API_KEY_ABUSEIPDB=my_secret_api_key
+  - .gitignore: removes .env because the API key is secret.
+
+# Risk analysis
+The risk analysis algorithm is very simple. We have 3 risk levels : LOW, MEDIUM, HIGH.
+As long as at least one suspicious domain is found in a cert, we have a LOW risk.
+The risk is bumped up one rank in any of those cases (and bumped up two ranks if both are true):
+- At least one abuse confidence score is above the threshold configures in config.py (INCREASED_RISK_SCORE_THRESHOLD variable)
+- If the certificate provider is considered as a suspicious one (also set in config.py, variable SUSPICIOUS_CERT_PROVIDERS)
+
+# Potential improvements
+- Custom handling of more exception types, creating my own Exception classes.
+- A better risk analysis function
+- Automatically check if we receive heartbeats from the certstream.calidog server, else run the server locally.
+- Warning/exception when we reached the limit of calls to AbuseIPDB with our current plan.
+- In the unit_tests, testing also the exception behaviors.
+- Log exceptions in a separate log file?
+- Make the server as a class

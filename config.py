@@ -3,9 +3,9 @@ import os
 # Configuration variables
 
 # Server configuration
-USING_LOCAL_SERVER = True # If True, then you need to configure PATH_TO_SERVER and SERVER_NAME below
+USING_LOCAL_SERVER = False # If True, then you need to configure PATH_TO_SERVER and SERVER_NAME below
 PATH_TO_SERVER = '' # If Windows, escape backlslash (\\) and add ".exe"
-PRINT_SERVER_LOGS = False # Will or will not print the server logs on the standard output
+PRINT_SERVER_LOGS = True # Will or will not print the server logs on the standard output
 
 # Domain configuration
 MY_DOMAIN = 'pepito' # The name of the domain to which potentially suspicious copycats will be compared.

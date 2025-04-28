@@ -10,6 +10,7 @@ and information about the certificate issuer.
 - Create a ".env" file at the root folder of the project and add a line like "API_KEY_ABUSEIPDB=your_key"
 - Install the server locally if certstream.calidog.io doesn't work (see below)
 - In config.py, update the PATH_TO_SERVER variable will the full path to your server (including ".exe" if on Windows).
+- In config.py, update the MY_DOMAIN variable to the name we are trying to protect ("pepito" for instance)
 
 ### Installing the server locally
 The certstream.calidog.io server hasn't been working at all since I've started working on this exercise, so I have had to run the server locally.

@@ -8,15 +8,15 @@ Most of the configuration of the program can be found in src.config.py.
 - git clone https://github.com/Tristanbbb/Pepito_and_co.git
 - Open the project in Pycharm
 - Click "Create a virtual environment using requirements.txt"
-- Create a ".env" folder at the root folder of the project and add a line like "API_KEY_ABUSEIPDB=your_key"
-- Run the server locally if certstream.calidog.io doesn't work (see below)
+- Create a ".env" file at the root folder of the project and add a line like "API_KEY_ABUSEIPDB=your_key"
+- Install the server locally if certstream.calidog.io doesn't work (see below)
+- In config.py, update the PATH_TO_SERVER variable will the full path to your server.
 
-### Running the server locally
+### Installing the server locally
 The certstream.calidog.io server hasn't been working at all since I've started working on this exercise, so I have had to run the server locally.
 - Download a precompiled version of [certstream-server-go](https://github.com/d-Rickyy-b/certstream-server-go)
 - Create a config.yml file in the Pepito_and_co/src folder (or keep the default file)
 - (Linux) Make the server executable (chmod u+x ./certstream-server-go_1.7.0_linux_amd64)
-
 
 # Project structure
 - src: contains the python files
@@ -31,13 +31,13 @@ The certstream.calidog.io server hasn't been working at all since I've started w
 - unit_tests: contains the unit tests
 - logs
   - suspicious_domains.log: contains the log of suspicious domains found.
-- .venv: contains the Python virtual environment with the necessary libraries
+- .venv (removed on Github): contains the Python virtual environment with the necessary libraries
 - files in root
   - config.py: contains most of the configuration of the program
   - README.mdr
   - requirements.txt: needed python libraries. To install with "pip install -r requirements.txt"
-  - .env: simulated env variables with the python dotenv lib. API_KEY_ABUSEIPDB=my_secret_api_key
-  - .gitignore: removes .env because the API key is secret.
+  - .env (removed on Github): simulated env variables with the python dotenv lib. API_KEY_ABUSEIPDB=my_secret_api_key
+  - .gitignore: removes .env because the API key is secret. You need to create your own .env file to run the program.
 
 # Risk analysis
 The risk analysis algorithm is very simple. We have 3 risk levels : LOW, MEDIUM, HIGH.

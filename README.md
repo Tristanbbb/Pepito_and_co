@@ -35,7 +35,7 @@ The certstream.calidog.io server hasn't been working at all since I've started w
 - files in root
   - config.py: contains most of the configuration of the program
   - README.mdr
-  - requirements.txt: needed python libraries. To install with "pip install -r requirements.txt"
+  - requirements.txt: needed python libraries.
   - .env (removed on Github): simulated env variables with the python dotenv lib. API_KEY_ABUSEIPDB=my_secret_api_key
   - .gitignore: removes .env because the API key is secret. You need to create your own .env file to run the program.
 

@@ -7,7 +7,6 @@ from src.config import LOG_MODE # "Append" or "Write" ("Write" deletes the old d
 class Logger:
     def __init__(self):
         self.print_logs = PRINT_SUSPICIOUS_DOMAINS_LOGS
-        # TODO : test wrong path, test file already open
         try:
             if LOG_MODE == 'Write':
                 self.log_file = open(LOGFILE_SUSPICIOUS_DOMAINS,"w")

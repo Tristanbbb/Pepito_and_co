@@ -2,7 +2,6 @@
 # Introduction
 This programs uses the Levenshtein distance to spot suspicious domains, get their AbuseIPDB confidence score,
 and information about the certificate issuer.
-Most of the configuration of the program can be found in src.config.py.
 
 # Prerequisites
 - git clone https://github.com/Tristanbbb/Pepito_and_co.git
@@ -10,7 +9,7 @@ Most of the configuration of the program can be found in src.config.py.
 - Click "Create a virtual environment using requirements.txt"
 - Create a ".env" file at the root folder of the project and add a line like "API_KEY_ABUSEIPDB=your_key"
 - Install the server locally if certstream.calidog.io doesn't work (see below)
-- In config.py, update the PATH_TO_SERVER variable will the full path to your server.
+- In config.py, update the PATH_TO_SERVER variable will the full path to your server (including ".exe" if on Windows).
 
 ### Installing the server locally
 The certstream.calidog.io server hasn't been working at all since I've started working on this exercise, so I have had to run the server locally.

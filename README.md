@@ -4,6 +4,7 @@ This programs uses the Levenshtein distance to spot suspicious domains, get thei
 and information about the certificate issuer.
 
 # Running as a docker image
+### (under construction)
 You can run the app as a docker image but there are some problems, notably with buffer size, making the app miss certs. However, using a keyword that doesn't retrieve too many certs, like "pepito", seems sufficient to mitigate the issue.
 
 To run it as a docker image anyway:

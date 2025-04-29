@@ -4,10 +4,10 @@ This programs uses the Levenshtein distance to spot suspicious domains, get thei
 and information about the certificate issuer.
 
 # Running as a docker image 
-### (warning: not working 100% yet)
+### (under construction)
 You can run the app as a docker image but there are some problems, notable with buffer size, making the app miss certs.
 To run it as a docker image anyway:
-- Get the docker image from []()
+- Get the docker image: `docker pull triton12/pepito_typosquatting:latest`
 - Copy and paste config.py where you want and edit the values as you want
 - run the docker image:
     `docker run -v /your/path/to/config/config.py:/config.py -e API_KEY_ABUSEIPDB=your_api_key -it triton12/pepito_typosquatting`
@@ -27,7 +27,8 @@ To run it as a docker image anyway:
 ### Installing the server locally
 The certstream.calidog.io server hasn't been working at all since I've started working on this exercise, so I have had to run the server locally.
 - Download a precompiled version of [certstream-server-go](https://github.com/d-Rickyy-b/certstream-server-go)
-- Create a config.yml file in the Pepito_and_co/src folder (or keep the default file)
+- Put it in the certstream_server folder and edit config.py at the root level with the name of your server in the PATH_TO_SERVER variable
+- Create a config.yml file in the certstream_server folder (or keep the default file)
 - (Linux) Make the server executable (chmod u+x ./certstream-server-go_1.7.0_linux_amd64)
 
 # Project structure

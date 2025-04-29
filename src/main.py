@@ -1,4 +1,4 @@
-import config
+import app_config
 import certstream
 from Logger import Logger
 from functions import get_risk_level
@@ -14,9 +14,9 @@ def my_callback(message,context):
     if message['message_type'] == "certificate_update":
         try:
             certstream_message = CertstreamMessage(message=message)
-            domain_analysis = DomainAnalysis(my_domain=config.MY_DOMAIN,
+            domain_analysis = DomainAnalysis(my_domain=app_config.MY_DOMAIN,
                                              domains_list=certstream_message.domain_list,
-                                             levenshtein_distance=config.LEVENSHTEIN_DISTANCE)
+                                             levenshtein_distance=app_config.LEVENSHTEIN_DISTANCE)
             if domain_analysis.suspicious_domains_list: # If suspicious domains are found
                 domain_analysis.match_scores_to_suspicious_domains() # Then we call the AbuseIPDB API to get abuse confidence scores
                 certstream_message.set_issuer_attributes() # And we retrieve the issuer attributes
@@ -34,7 +34,7 @@ def on_open():
     print("Connection successfully established!")
 
 def main():
-    if config.USING_LOCAL_SERVER:
+    if app_config.USING_LOCAL_SERVER:
         try:
             server_proc = run_server()
         except FileNotFoundError:

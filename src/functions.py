@@ -1,6 +1,6 @@
 
 
-import config
+import app_config
 
 # File containing functions that I didn't think needed to be in a class
 
@@ -16,8 +16,8 @@ def get_risk_level(abuse_confidence_scores, cert_provider):
     }
     current_risk_rank = 0
     # "if abuse_confidence_score", because it can be empty (in case we only have "SCORE_ERRORS"
-    if abuse_confidence_scores and max(abuse_confidence_scores) >= config.INCREASED_RISK_SCORE_THRESHOLD:
+    if abuse_confidence_scores and max(abuse_confidence_scores) >= app_config.INCREASED_RISK_SCORE_THRESHOLD:
         current_risk_rank += 1
-    if cert_provider in config.SUSPICIOUS_CERT_PROVIDERS:
+    if cert_provider in app_config.SUSPICIOUS_CERT_PROVIDERS:
         current_risk_rank += 1
     return risk_ranks[current_risk_rank]

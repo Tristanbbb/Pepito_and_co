@@ -2,14 +2,14 @@
 
 import unittest
 
-import config
+import app_config
 from src.CertstreamMessage import CertstreamMessage
 from unit_tests import message_samples
 # To run : python3 -m unittest test_api_key_manager.py
 
 class CertstreamMessageTest(unittest.TestCase):
     def setUp(self):
-        config.ISSUER_ATTRIBUTES_TO_RETRIEVE=['C', 'CN', 'O', 'TOTO']
+        app_config.ISSUER_ATTRIBUTES_TO_RETRIEVE=['C', 'CN', 'O', 'TOTO']
 
     def test_standard_message(self):
         my_certstream_message = CertstreamMessage(message_samples.standard_message)

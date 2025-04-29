@@ -3,16 +3,15 @@
 This programs uses the Levenshtein distance to spot suspicious domains, get their AbuseIPDB confidence score,
 and information about the certificate issuer.
 
-# Running as a docker image 
-### (under construction)
-You can run the app as a docker image but there are some problems, notable with buffer size, making the app miss certs.
+# Running as a docker image
+You can run the app as a docker image but there are some problems, notably with buffer size, making the app miss certs. However, using a keyword that doesn't retrieve too many certs, like "pepito", seems sufficient to mitigate the issue.
+
 To run it as a docker image anyway:
 - Get the docker image: `docker pull triton12/pepito_typosquatting:latest`
 - Copy and paste app_config.py where you want and edit the values as you want
 - run the docker image:
     `docker run -v /your/path/to/config/app_config.py:/app_config.py -e API_KEY_ABUSEIPDB=your_api_key -it triton12/pepito_typosquatting`
 - Warning:
-  - if too many certs are sent, we get "Not providing client with cert because client's buffer is full. The client can't keep up". This remains to be fixed and doesn't happen when the app is run in Pycharm.
   - if ran as a docker image, the suspicious domain alerts will only appear in the terminal and will not be saved in suspicious_domains.log
 
 # Running in Pycharm

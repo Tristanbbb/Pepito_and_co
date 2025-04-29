@@ -17,3 +17,4 @@ def run_server():
         raise FileNotFoundError
     except Exception as exception_instance:
         print(f"Other server error: {exception_instance}")
+        raise

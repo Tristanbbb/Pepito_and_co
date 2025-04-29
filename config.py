@@ -3,12 +3,12 @@ import os
 # Configuration variables
 
 # Server configuration
-USING_LOCAL_SERVER = False # If True, then you need to configure PATH_TO_SERVER and SERVER_NAME below
-PATH_TO_SERVER = '' # If Windows, escape backlslash (\\) and add ".exe"
+USING_LOCAL_SERVER = True # If True, then you need to configure PATH_TO_SERVER and SERVER_NAME below
+PATH_TO_SERVER = "{}/certstream-server-go_1.7.0_linux_amd64".format(os.path.join(os.path.dirname(os.path.abspath(__file__)),'certstream_server')) # If Windows, escape backlslash (\\) and add ".exe"
 PRINT_SERVER_LOGS = True # Will or will not print the server logs on the standard output
 
 # Domain configuration
-MY_DOMAIN = 'pepito' # The name of the domain to which potentially suspicious copycats will be compared.
+MY_DOMAIN = 'www' # The name of the domain to which potentially suspicious copycats will be compared.
 
 # Abuse IPDB configuration
 ABUSEIPDB_API_BASE_URL = 'https://api.abuseipdb.com/api/v2/check'

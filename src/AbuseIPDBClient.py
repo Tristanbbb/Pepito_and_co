@@ -60,7 +60,8 @@ class AbuseIPDBClient(BaseClient):
                 print("AbuseIPDBClient error: check_reputation() needs an ip or a domain name. Both can't be empty.")
             return "SCORE_ERROR"
         except requests.exceptions.RequestException as exception_instance:
-            print(f"AbuseIPDBClient error: {exception_instance}. There might be a problem with your API key.")
+            if str(exception_instance).startswith("429"):
+                print(f"AbuseIPDBClient error: 429 client error. Daily rate limit for calls to the API has been exceeded.")
             return "SCORE_ERROR"
         except Exception as exception_instance:
             if str(exception_instance) == "[Errno -5] No address associated with hostname":

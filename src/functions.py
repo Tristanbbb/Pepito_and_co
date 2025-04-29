@@ -1,25 +1,9 @@
-import subprocess
-from subprocess import DEVNULL
+
 
 import config
 
 # File containing functions that I didn't think needed to be in a class
 
-# To run the server locally
-def run_server():
-    try:
-        # Whether we want to see the server logs in the terminal or not, we have to pass different arguments to subprocess.Popen()
-        if config.PRINT_SERVER_LOGS:
-            server_proc = subprocess.Popen([f'{config.PATH_TO_SERVER}'])
-        else:
-            server_proc = subprocess.Popen([f'{config.PATH_TO_SERVER}'], stdout=DEVNULL, stderr=DEVNULL)
-        return server_proc
-    except FileNotFoundError as exception_instance:
-        print("Error trying to run the server: file not found. Double check config.PATH_TO_SERVER and config.SERVER_NAME")
-        print(exception_instance)
-        raise FileNotFoundError
-    except Exception as exception_instance:
-        print(f"Other server error: {exception_instance}")
 
 # See README.md to see the risk analysis policy
 def get_risk_level(abuse_confidence_scores, cert_provider):

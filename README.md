@@ -3,7 +3,19 @@
 This programs uses the Levenshtein distance to spot suspicious domains, get their AbuseIPDB confidence score,
 and information about the certificate issuer.
 
-# Prerequisites
+# Running as a docker image 
+### (warning: not working 100% yet)
+You can run the app as a docker image but there are some problems, notable with buffer size, making the app miss certs.
+To run it as a docker image anyway:
+- Get the docker image from []()
+- Copy and paste config.py where you want and edit the values as you want
+- run the docker image:
+    `docker run -v /your/path/to/config/config.py:/config.py -e API_KEY_ABUSEIPDB=your_api_key -it triton12/pepito_typosquatting`
+- Warning:
+  - if too many certs are sent, we get "Not providing client with cert because client's buffer is full. The client can't keep up". This remains to be fixed and doesn't happen when the app is run in Pycharm.
+  - if ran as a docker image, the suspicious domain alerts will only appear in the terminal and will not be saved in suspicious_domains.log
+
+# Running in Pycharm
 - git clone https://github.com/Tristanbbb/Pepito_and_co.git
 - Open the project in Pycharm
 - Click "Create a virtual environment using requirements.txt"
@@ -47,7 +59,8 @@ The risk is bumped up one rank in any of those cases (and bumped up two ranks if
 - If the certificate provider is considered as a suspicious one (also set in config.py, variable SUSPICIOUS_CERT_PROVIDERS)
 
 # Potential improvements
-- Containerize with Docker?
+- config.py => config.yml
+- Improver docker image and test it on several envs
 - Custom handling of more exception types, creating my own Exception classes.
 - A better risk analysis function
 - Automatically check if we receive heartbeats from the certstream.calidog server, else run the server locally.

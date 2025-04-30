@@ -32,6 +32,10 @@ The certstream.calidog.io server hasn't been working at all since I've started w
 - (Linux) Make the server executable (chmod u+x ./certstream-server-go_1.7.0_linux_amd64)
 
 # Project structure
+
+- certstream_server: contains the files needed to run the certstream server locally
+  - certstream-server-go_1.7.0_linux_amd64: the server executable
+  - config.yml: the server's configuration
 - src: contains the python files
   - AbuseIPDBClient.py: contains the class calling the AbuseIPDB API
   - BaseClient.py: base class for http requests
@@ -45,12 +49,13 @@ The certstream.calidog.io server hasn't been working at all since I've started w
 - logs
   - suspicious_domains.log: contains the log of suspicious domains found.
 - .venv (removed on Github): contains the Python virtual environment with the necessary libraries
-- files in root
+- root
   - app_config.py: contains most of the configuration of the program
-  - README.mdr
+  - README.md
   - requirements.txt: needed python libraries.
   - .env (removed on Github): simulated env variables with the python dotenv lib. API_KEY_ABUSEIPDB=my_secret_api_key
   - .gitignore: removes .env because the API key is secret. You need to create your own .env file to run the program.
+  - .dockerignore: we remove the .env and unit tests from the docker image
 
 # Risk analysis
 The risk analysis algorithm is very simple. We have 3 risk levels : LOW, MEDIUM, HIGH.
@@ -60,7 +65,6 @@ The risk is bumped up one rank in any of those cases (and bumped up two ranks if
 - If the certificate provider is considered as a suspicious one (also set in app_config.py, variable SUSPICIOUS_CERT_PROVIDERS)
 
 # Potential improvements
-- app_config.py => config.yml
 - Improver docker image and test it on several envs
 - Custom handling of more exception types, creating my own Exception classes.
 - A better risk analysis function

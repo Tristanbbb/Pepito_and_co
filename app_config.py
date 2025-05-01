@@ -3,9 +3,9 @@ import os
 # Configuration variables
 
 # Server configuration
-USING_LOCAL_SERVER = True # If True, then you need to configure PATH_TO_SERVER and SERVER_NAME below
-PATH_TO_SERVER = "{}/certstream-server-go_1.7.0_linux_amd64".format(os.path.join(os.path.dirname(os.path.abspath(__file__)),'certstream_server')) # If Windows, escape backlslash (\\) and add ".exe"
-PRINT_SERVER_LOGS = True # Will or will not print the server logs on the standard output
+USING_LOCAL_SERVER = True # If True, then you need to configure SERVER_NAME below
+SERVER_NAME = "certstream-server-go_1.7.0_linux_amd64" #
+PRINT_SERVER_LOGS = False # Will or will not print the server logs on the standard output
 
 # Domain configuration
 MY_DOMAIN = 'pepito' # The name of the domain to which potentially suspicious copycats will be compared.

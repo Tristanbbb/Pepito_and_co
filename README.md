@@ -4,30 +4,28 @@ This programs uses the Levenshtein distance to spot suspicious domains, get thei
 and information about the certificate issuer.
 
 # Running as a docker image
-### (under construction)
-You can run the app as a docker image but there are some problems, notably with buffer size, making the app miss certs. However, using a keyword that doesn't retrieve too many certs, like "pepito", seems sufficient to mitigate the issue.
+You can run the app as a docker image but there is a limit with the buffer size, making the app miss certs. However, using a keyword that doesn't retrieve too many certs, like "pepito", seems sufficient to mitigate the issue.
 
-To run it as a docker image anyway:
+To run as a docker image:
 - Get the docker image: `docker pull triton12/pepito_typosquatting:latest`
 - Copy and paste app_config.py where you want and edit the values as you want
+- Create a suspicious_domains.log file where ever you want.
 - run the docker image:
-    `docker run -v /your/path/to/config/app_config.py:/app_config.py -e API_KEY_ABUSEIPDB=your_api_key -it triton12/pepito_typosquatting`
-- Warning:
-  - if ran as a docker image, the suspicious domain alerts will only appear in the terminal and will not be saved in suspicious_domains.log
+    `docker run -v /path/to/your/app_config.py:/app/app_config.py -v /path/to/your/suspicious_domains.log:/app/logs/suspicious_domains.log -e API_KEY_ABUSEIPDB=your_api_key -it triton12/pepito_typosquatting`
 
 # Running in Pycharm
 - `git clone https://github.com/Tristanbbb/Pepito_and_co.git`
 - Open the project in Pycharm
 - Click "Create a virtual environment using requirements.txt" or "install requirements" (should pop up at the top of Pycharm)
 - Create a ".env" file at the root folder of the project and add a line like "API_KEY_ABUSEIPDB=your_key"
-- Install the server locally if certstream.calidog.io doesn't work (see below)
-- In app_config.py, update the PATH_TO_SERVER variable will the full path to your server (including ".exe" if on Windows).
-- In app_config.py, update the MY_DOMAIN variable to the name we are trying to protect ("pepito" for instance)
+- Install the server in the certstream_server folder if certstream.calidog.io doesn't work (see below)
+- In app_config.py, update the SERVER_NAME variable will the name of the server (including ".exe" if on Windows).
+- In app_config.py, update the MY_DOMAIN variable to the name we are trying to protect ("pepito" for instance). You can also tweak several other behaviors of the program in the app_config.py file.
 
 ### Installing the server locally
 The certstream.calidog.io server hasn't been working at all since I've started working on this exercise, so I have had to run the server locally.
 - Download a precompiled version of [certstream-server-go](https://github.com/d-Rickyy-b/certstream-server-go)
-- Put it in the certstream_server folder and edit app_config.py at the root level with the name of your server in the PATH_TO_SERVER variable
+- Put it in the certstream_server folder and edit app_config.py with the name of your server in the SERVER_NAME variable
 - Create a config.yml file in the certstream_server folder (or keep the default file)
 - (Linux) Make the server executable (chmod u+x ./certstream-server-go_1.7.0_linux_amd64)
 
@@ -36,6 +34,7 @@ The certstream.calidog.io server hasn't been working at all since I've started w
 - certstream_server: contains the files needed to run the certstream server locally
   - certstream-server-go_1.7.0_linux_amd64: the server executable
   - config.yml: the server's configuration
+  - run_server.py: the Python code to run the server
 - src: contains the python files
   - AbuseIPDBClient.py: contains the class calling the AbuseIPDB API
   - BaseClient.py: base class for http requests
@@ -65,11 +64,9 @@ The risk is bumped up one rank in any of those cases (and bumped up two ranks if
 - If the certificate provider is considered as a suspicious one (also set in app_config.py, variable SUSPICIOUS_CERT_PROVIDERS)
 
 # Potential improvements
-- Improver docker image and test it on several envs
 - Custom handling of more exception types, creating my own Exception classes.
 - A better risk analysis function
 - Automatically check if we receive heartbeats from the certstream.calidog server, else run the server locally.
-- Warning/exception when we reached the limit of calls to AbuseIPDB with our current plan.
 - In the unit_tests, testing also the exception behaviors.
 - Log exceptions in a separate log file?
 - Make the server as a class

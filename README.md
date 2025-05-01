@@ -14,6 +14,7 @@ To run as a docker image:
     `docker run -v /path/to/your/app_config.py:/app/app_config.py -v /path/to/your/suspicious_domains.log:/app/logs/suspicious_domains.log -e API_KEY_ABUSEIPDB=your_api_key -it triton12/pepito_typosquatting`
 
 # Running locally
+- Prerequisite: Python 3.12+
 - `git clone https://github.com/Tristanbbb/Pepito_and_co.git`
 - `pip install -r requirements.txt`
 - Create a ".env" file at the root folder of the project and add a line like "API_KEY_ABUSEIPDB=your_key"

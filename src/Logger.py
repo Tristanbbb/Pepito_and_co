@@ -1,4 +1,5 @@
 # Logger.py
+import datetime
 from app_config import LOGFILE_SUSPICIOUS_DOMAINS # Location of the log file
 from app_config import PRINT_SUSPICIOUS_DOMAINS_LOGS # True if we want to print the logs to the terminal in addition to already adding them to the log file
 from app_config import LOG_MODE # "Append" or "Write" ("Write" deletes the old data from the log file!)
@@ -24,7 +25,7 @@ class Logger:
 
     # Functions that displays and saves the row under the format: [HIGH] pepitoo.com(20),www.pepitoo.com(20)  (/C=US/CN=Let's Encrypt AuthorityX3/O=Let's Encrypt)
     def alert(self,risk_level: str, domains_and_scores: str, issuer_attributes: str):
-        alert_message = f"[{risk_level}]  {domains_and_scores} {issuer_attributes}\n"
+        alert_message = f"[{risk_level}]  {domains_and_scores} {issuer_attributes} Timestamp: {datetime.datetime.now()}\n"
         if self.print_logs:
             print(alert_message,end='')
 

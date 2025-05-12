@@ -1,5 +1,7 @@
 import app_config
 
+# We can configure the list of issuer attributes to retrieve in app_config.py
+# This is the function that retrieves them, and if there is any error, uses the attributes ['C','CN','O'] by default
 def get_list_of_issuer_attributes_to_retrieve():
     list_of_attributes = []
     try:
@@ -7,9 +9,11 @@ def get_list_of_issuer_attributes_to_retrieve():
     # If for some reason there is a problem with the retrieval from the config above,
     # then we return a list of default attributes (the ones specified in the exercise instructions
     except Exception as exception_instance:
-        print(exception_instance)
+        print(f"Error retrieving list of user attributes: {exception_instance}\nUsing defaults instead: C, CN, O.")
         list_of_attributes = ['C','CN','O']
     return list_of_attributes
+
+get_list_of_issuer_attributes_to_retrieve()
 
 # Class centralizing operations on the json received from certstream
 class CertstreamMessage:

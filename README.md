@@ -65,8 +65,10 @@ The risk is bumped up one rank in any of those cases (and bumped up two ranks if
 
 # Potential improvements
 - Custom handling of more exception types, creating my own Exception classes.
+- Logs in a database or a structured format.
 - A better risk analysis function
 - Automatically check if we receive heartbeats from the certstream.calidog server, else run the server locally.
 - In the unit_tests, testing also the exception behaviors.
 - Log exceptions in a separate log file?
 - Make the server as a class
+- Timeout and retries for the API calls.

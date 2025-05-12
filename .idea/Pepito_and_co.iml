@@ -6,7 +6,7 @@
     </content>
     <orderEntry type="jdk" jdkName="Python 3.12 (Pepito_and_co)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="cat_api" />
     <orderEntry type="module" module-name="certstream_docker_test" />
+    <orderEntry type="module" module-name="Tests" />
   </component>
 </module>

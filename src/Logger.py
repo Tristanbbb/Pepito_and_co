@@ -23,7 +23,7 @@ class Logger:
         except AttributeError: # If we have an attribute error, it means the file was not opened in the first place
             pass               # As a result, we can safely ignore the exception
 
-    # Functions that displays and saves the row under the format: [HIGH] pepitoo.com(20),www.pepitoo.com(20)  (/C=US/CN=Let's Encrypt AuthorityX3/O=Let's Encrypt)
+    # Function that displays and saves the row under the format: [HIGH] pepitoo.com(20),www.pepitoo.com(20)  (/C=US/CN=Let's Encrypt AuthorityX3/O=Let's Encrypt)
     def alert(self,risk_level: str, domains_and_scores: str, issuer_attributes: str):
         alert_message = f"[{risk_level}]  {domains_and_scores} {issuer_attributes} Timestamp: {datetime.datetime.now()}\n"
         if self.print_logs:

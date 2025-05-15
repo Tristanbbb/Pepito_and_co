@@ -13,7 +13,6 @@ def get_list_of_issuer_attributes_to_retrieve():
         list_of_attributes = ['C','CN','O']
     return list_of_attributes
 
-get_list_of_issuer_attributes_to_retrieve()
 
 # Class centralizing operations on the json received from certstream
 class CertstreamMessage:
@@ -21,7 +20,7 @@ class CertstreamMessage:
         self.message = message
         self.domain_list = self.get_domain_list()
         self.list_of_issuer_attributes = get_list_of_issuer_attributes_to_retrieve()
-        self.issuer_attributes = {} # Filled upon calling get_issuer_attributes(). We do it only if suspicious domains are found, for performance reasons.
+        self.issuer_attributes = {} # Filled upon calling set_issuer_attributes(). We do it only if suspicious domains are found, for performance reasons.
 
     def get_domain_list(self):
         try:

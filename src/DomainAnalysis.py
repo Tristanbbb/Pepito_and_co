@@ -39,6 +39,7 @@ class DomainAnalysis:
         else:
             # Only if we successfully instanciate abuse_ipdb_client do we then try to retrieve the scores
             for domain in self.suspicious_domains_list:
+                # No "try" here because get_abuse_confidence_score() returns a value even in case of an exception
                 abuse_confidence_score = abuse_ipdb_client.get_abuse_confidence_score(domain_param=domain)
                 self.suspicious_domains_and_scores_dict[domain] = abuse_confidence_score
 
